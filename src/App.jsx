@@ -16,8 +16,8 @@ const App = (props) => {
 
   return (
     <div>
-      <h1>Beers</h1>
-      <main>{beerTileJsx}</main>
+      <h1 className="page-heading">Beers</h1>
+      <main className="tile-container">{beerTileJsx}</main>
     </div>
   );
 };
