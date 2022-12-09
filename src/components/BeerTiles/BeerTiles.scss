@@ -1,0 +1,27 @@
+.tile {
+  display: flex;
+  flex-direction: column;
+  background-color: aliceblue;
+  //   width: 200px;
+  //   height: 260px;
+  //   overflow: hidden;
+  border: 1px solid black;
+
+  .tile__image {
+    transform: scale(1);
+  }
+  .tile__content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tile__title {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .tile__text {
+    color: black;
+  }
+}
