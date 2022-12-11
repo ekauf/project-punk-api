@@ -1,13 +1,12 @@
 .tile {
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: aliceblue;
-  //   max-width: 200px;
-  //   max-height: 260px;
-  overflow: hidden;
-  border: 1px solid black;
+  border: 5px solid black;
 
   .tile__image {
+    padding-top: 2rem;
     max-height: 50%;
     max-width: 50%;
   }
