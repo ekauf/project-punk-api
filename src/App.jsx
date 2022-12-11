@@ -1,4 +1,5 @@
 import "./App.scss";
+import SideNav from "./components/SideNav/SideNav";
 import BeerTiles from "./components/BeerTiles/BeerTiles";
 import beersArr from "./data/beers";
 
@@ -16,6 +17,7 @@ const App = (props) => {
 
   return (
     <div>
+      <SideNav />
       <h1 className="page-heading">Beers</h1>
       <main className="tile-container">{beerTileJsx}</main>
     </div>
