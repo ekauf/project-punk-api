@@ -1,5 +1,6 @@
 .beer-container {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1rem;
 }

@@ -19,8 +19,9 @@ const App = (props) => {
 
   return (
     <div className="page">
+      {/* <h1 className="page-heading">Beers</h1> */}
       <SideNav />
-      <h1 className="page-heading">Beers</h1>
+
       <BeerContainer beers={beers} />
     </div>
   );
