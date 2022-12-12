@@ -1,25 +1,27 @@
 import "./App.scss";
 import SideNav from "./containers/SideNav/SideNav";
-import BeerTiles from "./components/BeerTiles/BeerTiles";
-import beersArr from "./data/beers";
+import BeerTile from "./components/BeerTile/BeerTile";
+import { useEffect, useState } from "react";
+import BeerContainer from "./containers/BeerContainer/BeerContainer";
 
 const App = (props) => {
-  const beerTileJsx = beersArr.map(({ id, image_url, name, description }) => {
-    return (
-      <BeerTiles
-        key={id}
-        image={image_url}
-        name={name}
-        description={description}
-      />
-    );
-  });
+  const [beers, setBeers] = useState([]);
+
+  const getBeers = async () => {
+    const response = await fetch("https://api.punkapi.com/v2/beers");
+    const data = await response.json();
+    setBeers(data);
+  };
+
+  useEffect(() => {
+    getBeers();
+  }, []);
 
   return (
-    <div>
+    <div className="page">
       <SideNav />
       <h1 className="page-heading">Beers</h1>
-      <main className="tile-container">{beerTileJsx}</main>
+      <BeerContainer beers={beers} />
     </div>
   );
 };

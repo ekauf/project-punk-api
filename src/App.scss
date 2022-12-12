@@ -1,5 +1,9 @@
 @use "./assets/sass/reset";
 
+.page {
+  display: flex;
+}
+
 .page-heading {
   text-align: center;
   font-size: 2.5rem;
