@@ -1,16 +1,16 @@
 import "./App.scss";
-import SideNav from "./components/SideNav/SideNav";
+import SideNav from "./containers/SideNav/SideNav";
 import BeerTiles from "./components/BeerTiles/BeerTiles";
 import beersArr from "./data/beers";
 
 const App = (props) => {
-  const beerTileJsx = beersArr.map((props) => {
+  const beerTileJsx = beersArr.map(({ id, image_url, name, description }) => {
     return (
       <BeerTiles
-        key={props.id}
-        image={props.image_url}
-        name={props.name}
-        description={props.description}
+        key={id}
+        image={image_url}
+        name={name}
+        description={description}
       />
     );
   });

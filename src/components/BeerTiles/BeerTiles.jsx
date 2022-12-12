@@ -1,6 +1,6 @@
 import "./BeerTiles.scss";
 
-const BeerTiles = ({ key, image, name, description }) => {
+const BeerTiles = ({ image, name, description }) => {
   return (
     <div className="tile">
       <img className="tile__image" src={image} alt={name} />
