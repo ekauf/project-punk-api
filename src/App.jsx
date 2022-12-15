@@ -1,11 +1,10 @@
 import "./App.scss";
-// import SideNav from "./containers/SideNav/SideNav";
+
 import { useEffect, useState } from "react";
 import BeerContainer from "./containers/BeerContainer/BeerContainer";
-// import SideNav from "./containers/SideNav/SideNav";
+
 import Searchbar from "./components/Searchbar/Searchbar";
 import FilterList from "./components/FilterList/FilterList";
-// import getBeers from "./data/beersApi";
 
 const App = (props) => {
   const [beers, setBeers] = useState([]);
@@ -34,16 +33,13 @@ const App = (props) => {
   useEffect(() => {
     getBeers();
   }, []);
-  // console.log(beers);
-
-  // abvFilter, acidicFilter, classicFilter, searchBeers
 
   // const highAbv = beers.filter((beer) => {
   //   const highAbvBeer = beer.abv > 6;
   //   return highAbvBeer === abvFilter;
   //   // if (lowerCaseBeer.abv > 6) {
   //   //   return lowerCaseBeer === abvFilter;
-  //   // }
+  // });
 
   // if (beer.abv < 6) {
   //   return beer === abvFilter;
@@ -63,7 +59,7 @@ const App = (props) => {
   //   // setAcidicFilter(beer);
   //   // console.log(beer);
   // });
-  // // console.log(highAbv);
+  // // // console.log(highAbv);
 
   // const classic = beers.filter((beer) => {
   //   const classicBeer = beer.first_brewed.slice(-4) > 2009;
@@ -75,7 +71,7 @@ const App = (props) => {
   //   //   // setClassicFilter(beer);
   //   //   // console.log(beer);
   // });
-  // console.log(classic);
+  // // console.log(classic);
 
   const handleClickAbv = (event) => {
     const userClick = event.target.checked;
@@ -101,8 +97,6 @@ const App = (props) => {
       return beer.abv > 6;
     } else if (classicFilter === true) {
       return beer.first_brewed.slice(-4) < 2010;
-    } else if (acidicFilter === true && abvFilter === true) {
-      return beer.ph < 4 && beer.abv > 6;
     } else return beer;
   });
 
@@ -118,8 +112,6 @@ const App = (props) => {
 
   return (
     <div className="page">
-      {/* <h1 className="page-heading">Beers</h1> */}
-      {/* <SideNav/> */}
       <div className="side-nav">
         <Searchbar searchTerm={searchTerm} handleInput={handleInput} />
         <h3>Filters</h3>

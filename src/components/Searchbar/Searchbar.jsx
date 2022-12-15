@@ -4,9 +4,10 @@ const Searchbar = (props) => {
   const { searchTerm, handleInput } = props;
 
   return (
-    <div>
+    <div className="searchbar">
       <label htmlFor="search-beer"></label>
       <input
+        className="searchbar__input"
         onInput={handleInput}
         id="search-beer"
         value={searchTerm}
