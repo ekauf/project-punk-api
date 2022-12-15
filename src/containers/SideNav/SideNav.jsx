@@ -1,30 +1,30 @@
-import "./SideNav.scss";
-import { useState } from "react";
+// import "./SideNav.scss";
+// import { useState } from "react";
+// import Searchbar from "../../components/Searchbar/Searchbar";
 
-const SideNav = (props) => {
-  const { beers } = props;
-  const [searchTerm, setSearchTerm] = useState("");
+// const SideNav = (props) => {
+//   const { beers, label } = props;
+//   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredBeers = beers.filter((beer) => {
-    const lowerCaseBeer = beer.name.toLowerCase();
-    return lowerCaseBeer.includes(searchTerm);
-  });
+//   const filteredBeers = beers.filter((beer) => {
+//     const lowerCaseBeer = beer.name.toLowerCase();
+//     return lowerCaseBeer.includes(searchTerm);
+//   });
 
-  const handleInput = (event) => {
-    const userInput = event.target.value;
-    // console.log(userInput);
-    setSearchTerm(userInput);
-  };
+//   const handleInput = (event) => {
+//     const userInput = event.target.value;
+//     setSearchTerm(userInput);
+//   };
 
-  return (
-    <div className="side-nav">
-      <div className="side-nav__content">
-        <label htmlFor="beers">Search Beer: </label>
-        <input onInput={handleInput} id="beers" type="text" />
-        <p>{searchTerm}</p>
-      </div>
-    </div>
-  );
-};
+//   return (
+//     <div className="side-nav">
+//       <Searchbar
+//         label={"Search Beer: "}
+//         searchTerm={searchTerm}
+//         handleInput={handleInput}
+//       />
+//     </div>
+//   );
+// };
 
-export default SideNav;
+// export default SideNav;

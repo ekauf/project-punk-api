@@ -19,3 +19,13 @@
   gap: 2rem;
   justify-items: center;
 }
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  // position: fixed;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  height: 100%;
+}

@@ -1,16 +1,17 @@
 import "./Searchbar.scss";
 
 const Searchbar = (props) => {
-  const { label, searchTerm, handleInput } = props;
+  const { searchTerm, handleInput } = props;
 
   return (
     <div>
-      <label htmlFor={label}>{label}</label>
+      <label htmlFor="search-beer"></label>
       <input
         onInput={handleInput}
-        name={label}
+        id="search-beer"
         value={searchTerm}
         type="text"
+        placeholder="Search Beer..."
       />
     </div>
   );

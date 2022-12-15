@@ -2,12 +2,17 @@ import "./App.scss";
 // import SideNav from "./containers/SideNav/SideNav";
 import { useEffect, useState } from "react";
 import BeerContainer from "./containers/BeerContainer/BeerContainer";
+// import SideNav from "./containers/SideNav/SideNav";
 import Searchbar from "./components/Searchbar/Searchbar";
+import FilterList from "./components/FilterList/FilterList";
 // import getBeers from "./data/beersApi";
 
 const App = (props) => {
   const [beers, setBeers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [abvFilter, setAbvFilter] = useState(false);
+  const [acidicFilter, setAcidicFilter] = useState(false);
+  const [classicFilter, setClassicFilter] = useState(false);
 
   const getBeers = async () => {
     const fetchArray = [];
@@ -29,8 +34,69 @@ const App = (props) => {
   useEffect(() => {
     getBeers();
   }, []);
+  // console.log(beers);
+  // const beerFilter = beers.filter((beer) => {
 
-  const filteredBeers = beers.filter((beer) => {
+  // })
+
+  // abvFilter, acidicFilter, classicFilter, searchBeers
+
+  const highAbv = beers.filter((beer) => {
+    const highAbvBeer = beer.abv < 6;
+    return highAbvBeer === abvFilter;
+    // if (lowerCaseBeer.abv < 6) {
+    //   return lowerCaseBeer === abvFilter;
+    // }
+
+    // if (beer.abv < 6) {
+    //   return beer === abvFilter;
+    // }
+    // setAbvFilter(beer);
+    // console.log(beer);
+  });
+  // console.log(highAbv);
+  // console.log(beers);
+
+  const acidic = beers.filter((beer) => {
+    const acidicBeer = beer.ph > 4;
+    return acidicBeer === acidicFilter;
+    // if (beer.ph > 4) {
+    //   return beer;
+
+    // setAcidicFilter(beer);
+    // console.log(beer);
+  });
+  // console.log(acidic);
+
+  const classic = beers.filter((beer) => {
+    const classicBeer = beer.first_brewed.slice(-4) > 2009;
+    return classicBeer === classicFilter;
+
+    if (beer.first_brewed.slice(-4) > 2009) {
+      return beer;
+    }
+    // setClassicFilter(beer);
+    // console.log(beer);
+  });
+
+  const handleClickAbv = (event) => {
+    const userClick = event.target.checked;
+    setAbvFilter(userClick);
+    console.log(userClick);
+  };
+
+  const handleClickAcidic = (event) => {
+    const userClick = event.target.checked;
+    setAcidicFilter(userClick);
+    console.log(userClick);
+  };
+  const handleClickClassic = (event) => {
+    const userClick = event.target.checked;
+    setClassicFilter(userClick);
+    console.log(userClick);
+  };
+
+  const searchBeers = beers.filter((beer) => {
     const lowerCaseBeer = beer.name.toLowerCase();
     return lowerCaseBeer.includes(searchTerm);
   });
@@ -43,15 +109,28 @@ const App = (props) => {
   return (
     <div className="page">
       {/* <h1 className="page-heading">Beers</h1> */}
-      {/* <SideNav beers={beers} /> */}
+      {/* <SideNav/> */}
+      <div className="side-nav">
+        <Searchbar searchTerm={searchTerm} handleInput={handleInput} />
+        <h3>Filters</h3>
+        <FilterList
+          label={"High ABV (>6.0%)"}
+          handleClick={handleClickAbv}
+          beerFilter={abvFilter}
+        />
+        <FilterList
+          label={"Classic Range"}
+          handleClick={handleClickClassic}
+          beerFilter={classicFilter}
+        />
+        <FilterList
+          label={"Acidic (ph < 4)"}
+          handleClick={handleClickAcidic}
+          beerFilter={acidicFilter}
+        />
+      </div>
 
-      <Searchbar
-        label={"Search Beer: "}
-        searchTerm={searchTerm}
-        handleInput={handleInput}
-      />
-
-      <BeerContainer beers={filteredBeers} />
+      <BeerContainer beers={searchBeers} />
     </div>
   );
 };
