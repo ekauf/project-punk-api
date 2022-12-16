@@ -1,10 +1,9 @@
 import "./App.scss";
-
 import { useEffect, useState } from "react";
 import BeerContainer from "./containers/BeerContainer/BeerContainer";
-
 import Searchbar from "./components/Searchbar/Searchbar";
 import FilterList from "./components/FilterList/FilterList";
+import brewdog from "./assets/images/brewdog2.png";
 
 const App = (props) => {
   const [beers, setBeers] = useState([]);
@@ -34,44 +33,20 @@ const App = (props) => {
     getBeers();
   }, []);
 
-  // const highAbv = beers.filter((beer) => {
-  //   const highAbvBeer = beer.abv > 6;
-  //   return highAbvBeer === abvFilter;
-  //   // if (lowerCaseBeer.abv > 6) {
-  //   //   return lowerCaseBeer === abvFilter;
-  // });
+  const highAbv = beers.filter((beer) => {
+    const highAbvBeer = beer.abv > 6;
+    return highAbvBeer === abvFilter;
+  });
 
-  // if (beer.abv < 6) {
-  //   return beer === abvFilter;
-  // }
-  // setAbvFilter(beer);
-  // console.log(beer);
-  // });
-  // console.log(highAbv);
-  // console.log(beers);
+  const acidic = beers.filter((beer) => {
+    const acidicBeer = beer.ph < 4;
+    return acidicBeer === acidicFilter;
+  });
 
-  // const acidic = beers.filter((beer) => {
-  //   const acidicBeer = beer.ph < 4;
-  //   return acidicBeer === acidicFilter;
-  //   // if (beer.ph > 4) {
-  //   //   return beer;
-
-  //   // setAcidicFilter(beer);
-  //   // console.log(beer);
-  // });
-  // // // console.log(highAbv);
-
-  // const classic = beers.filter((beer) => {
-  //   const classicBeer = beer.first_brewed.slice(-4) > 2009;
-  //   return classicBeer === classicFilter;
-
-  //   // if (beer.first_brewed.slice(-4) > 2009) {
-  //   //   return beer;
-  //   // }
-  //   //   // setClassicFilter(beer);
-  //   //   // console.log(beer);
-  // });
-  // // console.log(classic);
+  const classic = beers.filter((beer) => {
+    const classicBeer = beer.first_brewed.slice(-4) > 2009;
+    return classicBeer === classicFilter;
+  });
 
   const handleClickAbv = (event) => {
     const userClick = event.target.checked;
@@ -91,14 +66,31 @@ const App = (props) => {
   };
 
   const beerFilter = beers.filter((beer) => {
-    if (acidicFilter === true) {
-      return beer.ph < 4;
-    } else if (abvFilter === true) {
+    if (abvFilter === true) {
       return beer.abv > 6;
     } else if (classicFilter === true) {
       return beer.first_brewed.slice(-4) < 2010;
+    } else if (acidicFilter === true) {
+      return beer.ph < 4;
     } else return beer;
   });
+
+  // new function filter beers -
+
+  // const filterBeers = (beers) => {
+  //   let tempArray = [...beerArray];
+  // };
+
+  //... if filterOne === true
+  // replace tempArray with only the filteredBeers
+
+  // ... if filterTwo === true
+  // replace tempArray with only the filteredBeers
+
+  // third time
+
+  // return tempArray
+  // }
 
   const handleInput = (event) => {
     const userInput = event.target.value;
@@ -113,6 +105,7 @@ const App = (props) => {
   return (
     <div className="page">
       <div className="side-nav">
+        <img className="side-nav__image" src={brewdog} alt="brewdog" />
         <Searchbar searchTerm={searchTerm} handleInput={handleInput} />
         <h3>Filters</h3>
         <FilterList

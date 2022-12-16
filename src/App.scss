@@ -23,9 +23,14 @@
 .side-nav {
   display: flex;
   flex-direction: column;
-  // position: fixed;
+  position: fixed;
   margin: 0;
-  padding: 0;
+  padding-left: 1rem;
+  padding-top: 0.2rem;
   background-color: #ffffff;
-  height: 100%;
+}
+
+.side-nav__image {
+  width: 175px;
+  height: 175px;
 }
