@@ -33,21 +33,6 @@ const App = (props) => {
     getBeers();
   }, []);
 
-  const highAbv = beers.filter((beer) => {
-    const highAbvBeer = beer.abv > 6;
-    return highAbvBeer === abvFilter;
-  });
-
-  const acidic = beers.filter((beer) => {
-    const acidicBeer = beer.ph < 4;
-    return acidicBeer === acidicFilter;
-  });
-
-  const classic = beers.filter((beer) => {
-    const classicBeer = beer.first_brewed.slice(-4) > 2009;
-    return classicBeer === classicFilter;
-  });
-
   const handleClickAbv = (event) => {
     const userClick = event.target.checked;
     setAbvFilter(userClick);
@@ -74,23 +59,6 @@ const App = (props) => {
       return beer.ph < 4;
     } else return beer;
   });
-
-  // new function filter beers -
-
-  // const filterBeers = (beers) => {
-  //   let tempArray = [...beerArray];
-  // };
-
-  //... if filterOne === true
-  // replace tempArray with only the filteredBeers
-
-  // ... if filterTwo === true
-  // replace tempArray with only the filteredBeers
-
-  // third time
-
-  // return tempArray
-  // }
 
   const handleInput = (event) => {
     const userInput = event.target.value;
